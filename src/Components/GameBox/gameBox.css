@@ -1,0 +1,7 @@
+.game-box {
+    width: 32%;
+    max-width: 459px;
+    height: 263px;
+    background-color: aqua;
+    box-sizing: border-box;
+}
