@@ -1,5 +1,6 @@
 import React from 'react';
 import AppInput from '../../Components/AppInput/AppInput';
+import DatePicker from '../../Components/DatePicker/DatePicker';
 import Footer from '../../Components/Footer/Footer';
 import GameBox from '../../Components/GameBox/GameBox';
 import useForm from '../../hooks/useForm';
@@ -10,7 +11,7 @@ import './landingPage.css';
 const LandingPage = () => {
     const {handleChange, handleSubmit, values, errors} = useForm(validateInfo);
 
-    console.log('errors', Object.keys(errors).length)
+    console.log('errors', errors == "{}")
   
 
     return (
@@ -39,7 +40,7 @@ const LandingPage = () => {
                             onChange={handleChange}
                             inputerror = {errors.email}
                         />
-                        <AppInput labelname={'Дата'} />
+                        <DatePicker/>
                         <AppInput
                             value={values.password}
                             labelname={'пароль'}
