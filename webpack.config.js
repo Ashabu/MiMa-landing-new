@@ -29,6 +29,7 @@ function getPlugins(config, isProd, analyze) {
         }),
         new HtmlWebpackPlugin({
             template: './public/index.html',
+            favicon: './public/favicon.ico',
             baseUrl: config.base_URL,
             webURL: config.web_URL,
             hash: false,

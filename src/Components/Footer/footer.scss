@@ -80,8 +80,8 @@ footer {
 }
 
 .soc-media a img {
-    width: 0.9rem;
-    height: 0.8rem;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .ft-mid {
@@ -115,6 +115,68 @@ footer {
     display: inline;
     z-index: 1;
     height: 2rem;
+}
+
+.fot {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.6);
+    background: #212224;
+    padding: 0.3rem 1rem;
+}
+
+.fot-left {
+    text-align: center;
+}
+
+.fot-left a {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #f79533;
+}
+
+.fot-left div {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.fot-mid {
+    display: flex;
+    justify-content: center;
+    gap: 0.64rem;
+    padding: 0.4rem;
+    order: 3;
+    flex-direction: column;
+}
+
+.fot-mid div {
+    text-transform: capitalize;
+    font-size: 0.9rem;
+}
+
+
+.fot-right {
+    font-size: 0.9rem;
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+}
+
+.fot-right a {
+    transition: all 0.2s ease;
+    color: White;
+}
+
+@media (min-width: 640px) {
+    
+}
+
+@media (min-width: 890px) {
+    
 }
 
 @media (min-width: 640px){
@@ -163,11 +225,41 @@ footer {
     .ft-bottom img {
         height: 2.4rem;
     }
+
+    .fot {
+        font-size: 1.4rem;
+        margin: 0.2rem 4rem;
+    }
+    
+    .fot-mid {
+        gap: 0.7rem;
+        padding: 0.4rem;
+    }
+
+    .fot-right {
+        font-size: 0.9rem;
+    }
    
 }
 
 @media (min-width: 890px){
     .address {
+        text-align: right;
+    }
+
+    .fot {
+        flex-direction: row;
+    }
+
+    .fot-left {
+        text-align: left;
+    }
+
+    .fot-mid {
+        order: initial;
+    }
+
+    .fot-right {
         text-align: right;
     }
 } 

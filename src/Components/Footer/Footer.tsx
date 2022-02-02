@@ -1,8 +1,9 @@
 import React from 'react';
-import './footer.css';
+import './footer.scss';
 
 const Footer = () => {
     return (
+        <>
         <footer>
             <div className='ft-top'>
                 <div className='ft-top-left'></div>
@@ -35,12 +36,31 @@ const Footer = () => {
                 <a href=''>Корпоративные ценности</a>
             </div>
             <div className='ft-bottom'>
-                <img src='' alt=''/>
-                <img src='' alt=''/>
-                <img src='' alt=''/>
-                <img src='' alt=''/>
+                <img src='../../assets/images/btc.svg' alt='btc'/>
+                <img src='../../assets/images/ethereum.svg' alt='ethereum'/>
+                <img src='../../assets/images/visa.svg' alt='visa'/>
+                <img src='../../assets/images/mastercard.svg' alt='mastercard'/>
             </div>
         </footer>
+        <div className='fot'>
+        <div className='fot-left'>
+            <a href=''>Часто задаваемые вопросы</a>
+            <div>
+                © 2021, Все права защищены.
+            </div>
+        </div>
+        <div className='fot-mid'>
+            <img src='' alt='' />
+            <div> Вернуться Наверх</div>
+        </div>
+        <div className='fot-right'>
+            <a target="_blank" href="/terms/terms-conditions">Условия использования</a>
+            &nbsp; • &nbsp;
+            <a target="_blank" href="/terms/privacy-statement">Заявление о конфиденциальности</a>
+        </div>
+
+    </div>
+    </>
     );
 };
 

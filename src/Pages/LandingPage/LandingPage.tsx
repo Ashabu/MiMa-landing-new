@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppInput from '../../Components/AppInput/AppInput';
 import DatePicker from '../../Components/DatePicker/DatePicker';
 import Header from '../../Components/Header/Header'
@@ -6,7 +6,7 @@ import Footer from '../../Components/Footer/Footer';
 import GameBox from '../../Components/GameBox/GameBox';
 import useForm from '../../hooks/useForm';
 import validateInfo from '../../hooks/validateInfo';
-import { SignUp } from '../../api/Api';
+import {SignUp, IGamesResponse, Games} from '../../api/Api';
 import './landingPage.scss';
 
 
@@ -15,6 +15,7 @@ const LandingPage = () => {
     const [date, setDate] = useState<string>('');
     const [step, setStep] = useState<number>(0);
     const [globalError, setGlobalError] = useState<string>('');
+    const [gameList, setGamesList] = useState<IGamesResponse[]>([]);
 
     const { handleChange, handleSubmit, values, errors } = useForm(validateInfo, date);
 
@@ -24,9 +25,12 @@ const LandingPage = () => {
     };
 
 
+    useEffect(() => {
+        handleGetGames();
+    }, [])
+
     const handleSignUp = () => {
         handleSubmit();
-        console.log(Object.keys(errors))
         if (Object.keys(errors).length > 0) return;
         let dates = date.split('-');
         let data = {
@@ -39,20 +43,25 @@ const LandingPage = () => {
             email: values.email,
             password: values.password,
             confirm_password: values.confirmPassword
-
-        }
+        };
 
         SignUp(data).then(res => {
             setGlobalError('');
             setStep(1);
         }).catch(e => {
             setGlobalError(e.response.data.email[0])
-            console.log('Error: ==>', e.response.data);
+            console.log('Error: ==>', e.response);
+        });
+    };
+
+    const handleGetGames = () => {
+        Games().then(res => {
+            console.log(res.data);
+            setGamesList(res.data)
+        }).catch(e => {
+            console.log('Error: ==>', e.response)
         })
-    }
-
-
-
+    };
 
     return (
         <>
@@ -97,6 +106,7 @@ const LandingPage = () => {
                                     inputerror={errors.confirmPassword}
                                 />
                             </div>
+                            {globalError && <p style={{color: 'red', fontSize: 20, fontFamily: 'Roboto-Bold'}}>{globalError}</p>}
                             <button className='reg-button' onClick={handleSignUp}>Зарегистрируйся</button>
                         </div>
                         :
@@ -134,33 +144,14 @@ const LandingPage = () => {
                         <img src='../../assets/images/live-icon.png' alt='icon' />
                     </div>
                     <div className='rooms'>
-                        <GameBox />
-                        <GameBox />
-                        <GameBox />
-                        <GameBox />
-                        <GameBox />
-                        <GameBox />
+                        {gameList && gameList.map(game => (
+                            <GameBox 
+                                key={game.game_id}
+                                game={game}/>
+                        ))}
                     </div>
                 </div>
                 <Footer />
-                <div className='fot'>
-                    <div className='fot-left'>
-                        <a href=''>Часто задаваемые вопросы</a>
-                        <div>
-                            © 2021, Все права защищены.
-                        </div>
-                    </div>
-                    <div className='fot-mid'>
-                        <img src='' alt='' />
-                        <div> Вернуться Наверх</div>
-                    </div>
-                    <div className='fot-right'>
-                        <a target="_blank" href="/terms/terms-conditions">Условия использования</a>
-                        &nbsp; • &nbsp;
-                        <a target="_blank" href="/terms/privacy-statement">Заявление о конфиденциальности</a>
-                    </div>
-
-                </div>
             </div>
         </>
     );
