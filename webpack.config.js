@@ -70,7 +70,8 @@ module.exports = (env, argv) => {
             historyApiFallback:  {
                 disableDotRule: true
             },
-            port: 9000
+            port: 3000,
+            inline: true,
         },
         resolve: {
             extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"]
@@ -127,6 +128,8 @@ module.exports = (env, argv) => {
                     }
                 }
             ]
-        }
+        },
+        target: isProd? 'browserslist' : 'web'
+
     };
 };

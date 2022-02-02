@@ -4,10 +4,13 @@ export interface IValues {
     username: string,
     email: string,
     password: string,
-    confirmPassword: string
+    confirmPassword: string,
+    date?: string
 }
 
-const useForm = (validate: any) => {
+
+
+const useForm = (validate: any, date: string) => {
     const [values, setValues] = useState<IValues>({
         username: '',
         email: '',
@@ -15,7 +18,9 @@ const useForm = (validate: any) => {
         confirmPassword: ''
     });
 
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState<any>({
+       
+    });
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
@@ -27,7 +32,7 @@ const useForm = (validate: any) => {
     };
 
     const handleSubmit = () => {
-        setErrors(validate(values));
+        setErrors(validate(values, date));
     }
 
     return { handleChange, handleSubmit, values, errors };

@@ -1,63 +1,112 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppInput from '../../Components/AppInput/AppInput';
 import DatePicker from '../../Components/DatePicker/DatePicker';
+import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer';
 import GameBox from '../../Components/GameBox/GameBox';
 import useForm from '../../hooks/useForm';
 import validateInfo from '../../hooks/validateInfo';
-import './landingPage.css';
+import { SignUp } from '../../api/Api';
+import './landingPage.scss';
+
 
 
 const LandingPage = () => {
-    const {handleChange, handleSubmit, values, errors} = useForm(validateInfo);
+    const [date, setDate] = useState<string>('');
+    const [step, setStep] = useState<number>(0);
+    const [globalError, setGlobalError] = useState<string>('');
 
-    console.log('errors', errors == "{}")
-  
+    const { handleChange, handleSubmit, values, errors } = useForm(validateInfo, date);
+
+    const handleSelectDate = (val: string) => {
+        console.log(val)
+        setDate(val);
+    };
+
+
+    const handleSignUp = () => {
+        handleSubmit();
+        console.log(Object.keys(errors))
+        if (Object.keys(errors).length > 0) return;
+        let dates = date.split('-');
+        let data = {
+            birth_date: date,
+            day: dates[2],
+            month: dates[1],
+            year: dates[0],
+            username: values.username,
+            mima_name: values.username,
+            email: values.email,
+            password: values.password,
+            confirm_password: values.confirmPassword
+
+        }
+
+        SignUp(data).then(res => {
+            setGlobalError('');
+            setStep(1);
+        }).catch(e => {
+            setGlobalError(e.response.data.email[0])
+            console.log('Error: ==>', e.response.data);
+        })
+    }
+
+
+
 
     return (
-        <div style={{ maxWidth: 1920, margin: '0px auto', backgroundColor: '#000000' }}>
+        <>
             <div className='main-section'>
-                <header>
-                    <img src='../../assets/images/mima-logo.png' alt='img' />
-                    <p>Зарегистрируйся</p>
-                </header>
-                <div className='main-right'>
-                    <div className='promo-title'>
-                        <h1>WELCOME CHIPS</h1>
-                        <h3>Получите  <span>10 долларов </span> в подарок <br /> <span>При регистрации</span></h3>
-                    </div>
-                    <div className='input-wrap'>
-                        <AppInput
-                            value={values.username}
-                            labelname={'имя  пользователя'}
-                            name={'username'}
-                            onChange={handleChange} 
-                            inputerror = {errors.username}/>
-                        <AppInput
-                            value={values.email}
-                            labelname={'электронная  почта'}
-                            name={'email'}
-                            onChange={handleChange}
-                            inputerror = {errors.email}
-                        />
-                        <DatePicker/>
-                        <AppInput
-                            value={values.password}
-                            labelname={'пароль'}
-                            name={'password'}
-                            onChange={handleChange}
-                            inputerror = {errors.password}
-                        />
-                        <AppInput
-                            value={values.confirmPassword}
-                            labelname={'повторный  пароль'}
-                            name={'confirmPassword'}
-                            onChange={handleChange} 
-                            inputerror = {errors.confirmPassword}
-                            />
-                    </div>
-                    <button className='reg-button' onClick={handleSubmit}>Зарегистрируйся</button>
-                </div>
+                <Header />
+                {
+                    step === 0 ?
+                        <div className='main-right'>
+                            <div className='promo-title'>
+                                <h1>WELCOME CHIPS</h1>
+                                <h3>Получите <span>10 долларов </span> в подарок <br /> <span>При регистрации</span></h3>
+                            </div>
+                            <div className='input-wrap'>
+                                <AppInput
+                                    value={values.username}
+                                    labelname={'имя  пользователя'}
+                                    name={'username'}
+                                    onChange={handleChange}
+                                    inputerror={errors.username} />
+                                <AppInput
+                                    value={values.email}
+                                    labelname={'электронная  почта'}
+                                    name={'email'}
+                                    onChange={handleChange}
+                                    inputerror={errors.email}
+                                />
+                                <DatePicker
+                                    callBack={handleSelectDate}
+                                    errortext={errors.date!} />
+                                <AppInput
+                                    value={values.password}
+                                    labelname={'пароль'}
+                                    name={'password'}
+                                    onChange={handleChange}
+                                    inputerror={errors.password}
+                                />
+                                <AppInput
+                                    value={values.confirmPassword}
+                                    labelname={'повторный  пароль'}
+                                    name={'confirmPassword'}
+                                    onChange={handleChange}
+                                    inputerror={errors.confirmPassword}
+                                />
+                            </div>
+                            <button className='reg-button' onClick={handleSignUp}>Зарегистрируйся</button>
+                        </div>
+                        :
+                        <div className='reg-main-right'>
+                            <h1>Регистрация успешна !</h1>
+                            <h3>Пожалуйста, проверьте свою электронную почту, <br /> чтобы завершить верификацию и получить подарок.</h3>
+                            <p>удачи</p>
+                            <button className='back-to-loby'></button>
+                        </div>
+                }
             </div>
             <div className='second-section'>
                 <p> Ваше место за столом ждет </p>
@@ -113,7 +162,7 @@ const LandingPage = () => {
 
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

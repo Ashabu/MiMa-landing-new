@@ -1,5 +1,5 @@
 import React, {  SyntheticEvent } from 'react';
-import './AppInput.css'
+import './AppInput.scss'
 
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
@@ -24,7 +24,7 @@ const AppInput: React.FC<IInputProps> = (props) => {
         <div className='input-wrap'>
             <input className='app-input' {...props}/>
             <span>{labelname}</span>
-            {inputerror && <div className='input-error'>{inputerror}</div>}
+            {inputerror && <span className='input-error'>{inputerror}</span>}
         </div>
     );
 };

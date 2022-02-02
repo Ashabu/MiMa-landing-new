@@ -1,12 +1,18 @@
 import { IValues } from "./useForm";
 
 
-const validateInfo = (values: IValues) => {
-    let errors: any  = {};
+const validateInfo = (values: IValues, date: string) => {
+    let errors: any  = {
+        
+    };
 
     if(!values.username.trim()) {
         errors.username = 'Please Enter Username';
     };
+
+    if(date == '') {
+        errors.date = 'Please Chose Date'
+    }
 
     if(!values.email) {
         errors.email = 'Please Enter Email'

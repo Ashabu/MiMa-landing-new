@@ -12,15 +12,15 @@ const Footer = () => {
                 <div className='ft-top-right'>
                     <div className='address'>112 Bonadie Street, P.O Box 613, Kingstown, St. Vincent</div>
                     <div className='contact'>
-                        <img src='../../assets/images/cards.png' alt='icon' />
+                        <img src='../../assets/images/mail.svg' alt='icon' />
                         <a href="mailto:support@mima-poker.cc">support@mima-poker.cc</a>
                     </div>
                     <div className='soc-media'>
-                        <a>
-                            <img src='' alt='fb-icon' />
+                        <a href='https://www.facebook.com/MiMaLivePoker/'>
+                            <img src='../../assets/images/facebook.svg' alt='fb-icon' />
                         </a>
-                        <a>
-                        <img src='' alt='insta-icon' />
+                        <a href='https://www.instagram.com/mima_live_poker/'>
+                        <img src='../../assets/images/instagram.svg' alt='insta-icon' />
                         </a>
                     </div>
                 </div>
