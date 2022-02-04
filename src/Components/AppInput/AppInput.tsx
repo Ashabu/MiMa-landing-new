@@ -8,7 +8,8 @@ interface IInputProps {
     labelname: string
     name: string,
     inputerror: string,
-    onChange: (e: InputEvent )=> void
+    onChange: (e: InputEvent )=> void,
+    onInput?: (e: InputEvent )=> void,
 }
 
 

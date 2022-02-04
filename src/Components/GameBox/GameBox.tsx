@@ -26,7 +26,7 @@ const GameBox:React.FC<IGameProps> = ({game}) => {
 
     return (
         <div className='game-box'>
-            <a href=''>
+            <a href={`${globalConfig.api_URL}/login`}>
                 <img src={renderCoverImage(game.cover_image)} alt='' style={{transform: 'scale(1)'}}/>
                 <span style={{opacity: 0}}>
                     <div></div>

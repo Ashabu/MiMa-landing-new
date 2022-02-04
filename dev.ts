@@ -1,4 +1,4 @@
 module.exports = {
     "base_URL": "/",
-    "api_URL": "http://localhost:8000",
+    "api_URL": "https://dev.mima-poker.cc",
 };

@@ -21,3 +21,20 @@ header {
         color: #FE9600;
     }
 }
+
+
+@media (max-width: 610px) {
+    header {
+        padding:  0 25px;
+        min-height: 63px;
+
+        img {
+            width: 77px;
+            height: 18px;
+        }
+
+        p {
+            font-size: 11px;
+        }
+    }
+}

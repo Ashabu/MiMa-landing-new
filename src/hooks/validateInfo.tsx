@@ -7,33 +7,32 @@ const validateInfo = (values: IValues, date: string) => {
     };
 
     if(!values.username.trim()) {
-        errors.username = 'Please Enter Username';
+        errors.username = 'Имя Пользователя (обязательно)';
     };
 
     if(date == '') {
-        errors.date = 'Please Chose Date'
+        errors.date = 'Дата (обязательно)';
     }
 
     if(!values.email) {
-        errors.email = 'Please Enter Email'
+        errors.email = 'Почтовый адрес (обязательно)';
     } else if(!/\S+@\S+\.\S+/.test(values.email)) {
-        errors.email = 'Invalid  Email'
+        errors.email =' укажите действующий адрес электронной почты';
     }
 
     if(!values.password) {
-        errors.password = 'Please Enter Password'
+        errors.password = 'Пароль (обязательно)';
     } else if ( !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/.test(values.password)) {
-        errors.password = 'Pasword Too Weak'
+        errors.password = 'Пароль должен быть длиной 8-30 символов и должен содержать как минимум одну цифру и одну букву';
     }
 
 
     if(!values.confirmPassword) {
-        errors.confirmPassword = 'Please Fill out the form'
+        errors.confirmPassword = 'Подтверждение пароля (обязательно)';
     }
     else if (values.password != values.confirmPassword) {
-        errors.confirmPassword = 'Password do not match'
+        errors.confirmPassword = 'Пароли не совпадают';
     }
-    
     
     return errors;
 

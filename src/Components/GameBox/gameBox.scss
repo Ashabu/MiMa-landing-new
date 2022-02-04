@@ -63,23 +63,9 @@
     }
 }
 
-@media (min-width: 640px) {
+@media (max-width: 610px) {
     .game-box {
-    
-        a {
-            border-radius: 1rem;
-        }
-
-        span {
-            display: flex;
-        }
-
-        div {
-            &:last-child {
-                display: flex;
-            }
-
-        }
+        width: 47%;
+        height: 151px;
     }
-    
 }

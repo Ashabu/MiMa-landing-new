@@ -22,9 +22,10 @@ const useForm = (validate: any, date: string) => {
        
     });
 
+
+
     const handleChange = (e: any) => {
         const { name, value } = e.target;
-        console.log(name)
         setValues({
             ...values,
             [name]: value

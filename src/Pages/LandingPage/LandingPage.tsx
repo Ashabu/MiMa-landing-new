@@ -66,6 +66,7 @@ const LandingPage = () => {
     return (
         <>
             <div className='main-section'>
+                <img className='animated-lip' src = '../../assets/images/lips.png' alt='lips'/>
                 <Header />
                 {
                     step === 0 ?
