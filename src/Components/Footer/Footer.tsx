@@ -6,7 +6,10 @@ const Footer = () => {
         <>
         <footer>
             <div className='ft-top'>
-                <div className='ft-top-left'></div>
+                <div className='ft-top-left'>
+                    English
+                   
+                </div>
                 <div className='ft-top-mid'>
                     <img src='../../assets/images/mima-logo.png' alt='mima-logo'/>
                 </div>

@@ -16,8 +16,6 @@
             font-family: 'Roboto-Light';
             text-transform: uppercase;
             z-index: 9;
-            
-        
         }
     }
 
@@ -40,8 +38,35 @@
         box-sizing: border-box;
         color: #FFFFFF;
     }
+}
+
+@media(max-width: 1540px) {
+    .input-wrap {
+        .app-input {
+            width: 100%;
+            max-width: 457px;
+        }    
+    }
+}
 
 
+@media(max-width: 1024px) {
+    .input-wrap {
+        span {
+            &:first-of-type {
+                background-color: black;
+                position: absolute;
+                top: -10px;
+                left: 14px;
+                padding: 0 10px;
+                font-size: 16px;
+            }
+        }
+        .app-input {
+            height: 50px;
+            max-width: 357px;
+        }    
+    }
 }
 
 

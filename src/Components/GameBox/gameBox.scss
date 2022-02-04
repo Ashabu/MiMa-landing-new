@@ -2,7 +2,6 @@
     width: 32%;
     max-width: 459px;
     height: 263px;
-    border: 1px solid #FFFFFF;
     box-sizing: border-box;
 
     a {
@@ -30,7 +29,7 @@
         width: 100%;
         height: 100%;
         display: none;
-        //box-shadow: rgb(247 149 51) 0rem -7rem 20rem -3rem inset;
+        box-shadow: rgb(247 149 51) 0rem -7rem 20rem -3rem inset;
         -webkit-box-align: center;
         align-items: center;
         -webkit-box-pack: center;
@@ -51,11 +50,15 @@
             width: 100%;
             height: 100%;
             display: none;
-            //box-shadow: rgb(247 149 51) 0rem -7rem 20rem -3rem inset;
+            
             -webkit-box-align: center;
             align-items: center;
             -webkit-box-pack: center;
             justify-content: center;
+        }
+
+        &:hover{
+            box-shadow: rgb(247 149 51) 0rem -7rem 20rem -3rem inset;
         }
     }
 }

@@ -6,7 +6,7 @@ import Footer from '../../Components/Footer/Footer';
 import GameBox from '../../Components/GameBox/GameBox';
 import useForm from '../../hooks/useForm';
 import validateInfo from '../../hooks/validateInfo';
-import {SignUp, IGamesResponse, Games} from '../../api/Api';
+import { SignUp, IGamesResponse, Games } from '../../api/Api';
 import './landingPage.scss';
 
 
@@ -106,7 +106,7 @@ const LandingPage = () => {
                                     inputerror={errors.confirmPassword}
                                 />
                             </div>
-                            {globalError && <p style={{color: 'red', fontSize: 20, fontFamily: 'Roboto-Bold'}}>{globalError}</p>}
+                            {globalError && <p style={{ color: 'red', fontSize: 12, fontFamily: 'Roboto-Light' }}>{globalError}</p>}
                             <button className='reg-button' onClick={handleSignUp}>Зарегистрируйся</button>
                         </div>
                         :
@@ -119,7 +119,9 @@ const LandingPage = () => {
                 }
             </div>
             <div className='second-section'>
-                <p> Ваше место за столом ждет </p>
+                <div className='section-title'>
+                    <p> Ваше место за столом ждет </p>
+                </div>
                 <div className='separator' >
                     <div className='circle-wrap'>
                         <div className='circle'>
@@ -136,7 +138,10 @@ const LandingPage = () => {
                         </div>
                     </div>
                 </div>
+
                 <p style={{ fontSize: 20, marginTop: 138, marginBottom: 60 }}> За нашими покерными столами вас ждет увлекательная игра</p>
+
+
                 <div className='rooms-wrap'>
                     <div className='rooms-header'>
                         <img src='../../assets/images/cards.png' alt='icon' />
@@ -145,9 +150,9 @@ const LandingPage = () => {
                     </div>
                     <div className='rooms'>
                         {gameList && gameList.map(game => (
-                            <GameBox 
+                            <GameBox
                                 key={game.game_id}
-                                game={game}/>
+                                game={game} />
                         ))}
                     </div>
                 </div>
